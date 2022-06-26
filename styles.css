@@ -1,0 +1,154 @@
+.background {
+  background: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(154, 154, 154));
+}
+
+
+
+
+.title {
+
+    font-size:100px;
+
+}
+
+.welcome {
+    font-size:75px;
+    margin:20px;
+}
+
+.mainscreenbuttons {
+    font-size:125px;
+    width:400px;
+    margin:auto;
+    cursor:hand;
+    text-decoration:none;
+}
+
+.msb{
+
+  border:2px solid black;
+  border-radius:15px;
+  width:700px;
+  height:900px;
+  margin:auto;
+}
+
+.mainscreenbuttons:hover {
+    background-color: rgba(140, 138, 138, 0.47);
+}
+
+.photo {
+    border:1px solid black;
+    width:400px;
+    height:400px;
+    margin:auto;
+    margin-top:60px;
+}
+
+.tagbutton {
+    font-size:75px;
+    width:350px;
+    margin:auto;
+    cursor:hand;
+    margin-top:60px;
+    margin-bottom:60px;
+padding:auto;
+}
+
+.tagbutton:hover {
+    background:rgba(150,150,150,90);
+}
+
+.back {
+    font-size:90px;
+    color:blue;
+    cursor:hand;
+    margin:auto;
+    margin-top:60px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: rgb(55, 197, 39);
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+  
+  /* Add Zoom Animation */
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+  }
+  
+  @keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
+
+  .LoginButton {
+    background:rgb(5, 206, 72);
+    cursor:hand;
+    width:350px;
+    height:175px;
+    font-size: 75px;
+  }
+
+  .LoginButton:hover {
+    background:rgb(32, 155, 32)
+  }
+
+  .logindiv {
+    margin:auto;
+    width:250px;
+    text-decoration:none;
+  }
+
+  .logindiv1 {
+    width:250px;
+    text-decoration:none;
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  }
