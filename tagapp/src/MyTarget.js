@@ -65,6 +65,13 @@ export class MyTarget extends React.Component {
     }
     
     render() {
+       
+        // Set icon image.
+        let icon = null;
+        if (this.state.targetName) {
+            icon = './targets/' + this.state.targetName + '.jpg';
+        }
+        
         return (
             <div>
                 <a onClick={this.LoadTarget}>Who is my target?</a>
@@ -72,7 +79,7 @@ export class MyTarget extends React.Component {
                     (this.state.targetName) && 
 
                         <div className="card">
-                            {/*<img src='./targets/Erik.jpg' alt="{this.state.targetName}" style="width:100%"/>*/}
+                            <img src={icon} alt="{this.state.targetName}" style="width:100%"/>
                                 <h1>{this.state.targetName}</h1>
                                 <p className="title">{this.GetSlogan(this.state.targetName)}</p>
                                 <ul>
