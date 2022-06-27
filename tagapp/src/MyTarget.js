@@ -62,12 +62,20 @@ export class MyTarget extends React.Component {
         return (
             <div>
                 <a onClick={this.LoadTarget}>Who is my target?</a>
-                <span>{this.state.targetName}</span>
                 {
-                    (this.state.targetName) && <div>
-                        <a onClick={() => {this.TagTarget()}}>TAG</a>
-                        <a onClick={() => {this.HideTarget()}}>Hide</a>
-                    </div>
+                    (this.state.targetName) && 
+
+                        <div className="card">
+                            <img src='./targets/Erik.jpg' alt="{this.state.targetName}" style="width:100%"/>
+                                <h1>{this.state.targetName}</h1>
+                                <p className="title">CEO & Founder, Example</p>
+                                <p>Harvard University</p>
+                                <p>
+                                    <a onClick={() => {this.TagTarget()}}>TAG</a>
+                                    <a onClick={() => {this.HideTarget()}}>Hide</a>
+                                </p>
+                        </div>
+                    
                 }
             </div>
         );
