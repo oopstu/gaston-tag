@@ -52,15 +52,69 @@ class GameData {
         this.players.forEach(z => x.push(z.playerName));
         return x;
     }
+
+    LoadMethods() {
+        let rawdata = fs.readFileSync('method.json');
+        return JSON.parse(rawdata);
+    }
+    
+    GetMethodFor(player) {
+        console.log("Looking up Method for: " + player);
+        let m = this.players.find(x => x.playerName === player).method;
+        
+        let allMethods = this.LoadMethods();
+        
+        let result = allMethods.find(x => x.id === m);
+        console.log("found method: " + result);
+        
+        if (result) {
+            return result;
+        }
+        // Otherwise null.
+        return null;
+    }
+    
+    GetTargetFor(player) {
+        console.log("Looking up Target for: " + player);
+        console.log("player count: " + this.players.length + " fist is: " + this.players[0].playerName);
+        let t = this.players.find(x => x.playerName === player).target;
+        console.log("Found target named: " + t);
+        return { target: t };
+    }
+    
+    GetMethodOptions(player) {
+        
+        // Now pair everyone with a target and load all the 
+        // methods!
+        let methods = this.LoadMethods();
+        let min = 0;
+        let max = methods.length;
+        let picked = [];
+        
+        while (picked.length !== 3) {
+            let index = Math.floor(Math.random() * (max - min + 1) + min);
+            let thisone = methods[index];
+            if (!picked.find(x => x === thisone)) {
+                picked.push(thisone);
+            }
+        }
+        return picked;
+    }
+    
+    SetMethod(player, methodId) {
+        
+        this.history.push({playerName: player, message: "Picked their method", stamp: new Date()});
+
+        this.players.find(x => x.playerName === player).method = methodId;
+
+        this.Save();
+    }
     
     StartGame() {
         this.started = true;
         this.history.push({playerName: 'Heath', message: "Started the Game", stamp: new Date()});
         
-        // Now pair everyone with a target and load all the 
-        // methods!
-        let methods = LoadMethods();
-     
+        console.log('Setting targets');
         // Each player should be the next players target.
         for (let i = 0; i < this.players.length; i++) {
             if (i + 1 === this.players.length) {
@@ -69,16 +123,12 @@ class GameData {
                 this.players[i].target = this.players[i+1].playerName;
             }
         }
-        
-        this.history.push({playerName: player, message: "Game Started!", stamp: new Date()});
+        console.log('all targets set.');
         
         this.Save();
     }
     
-    LoadMethods() {
-        let rawdata = fs.readFileSync('method.json');
-        return JSON.parse(rawdata);
-    }
+   
     
     Save() {
         console.log('saving all game data');

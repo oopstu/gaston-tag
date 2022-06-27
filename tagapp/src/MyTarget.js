@@ -10,9 +10,11 @@ export class MyTarget extends React.Component {
             targetName: null,
             playerName: props.player
         }
+        
+        this.LoadTarget = this.LoadTarget.bind(this);
     }
     
-    componentDidMount() {
+    LoadTarget() {
         // call api or anything
         fetch('/gettarget', {
             method: 'post',
@@ -23,9 +25,14 @@ export class MyTarget extends React.Component {
         })
             .then(res => res.json())
             .then((data) => {
-                console.log(data);
-                this.setState({ targetName: data })
-
+                console.log('loaded target for you: ' + data.target);
+                if (data) {
+                    console.log(data);
+                    this.setState({targetName: data.target})
+                } else {
+                    console.log("no target, waiting for game start");
+                    this.setState({targetName: "No Target, waiting for game to start."});
+                }
             })
             .catch(console.log)
     }
@@ -33,7 +40,7 @@ export class MyTarget extends React.Component {
     render() {
         return (
             <div>
-                <span>Who is my target?</span>
+                <a onClick={this.LoadTarget}>Who is my target?</a>
                 <span>{this.state.targetName}</span>
             </div>
         );

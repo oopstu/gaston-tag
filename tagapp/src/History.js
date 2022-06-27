@@ -32,7 +32,7 @@ export class History extends React.Component {
     render() {
         return (
             <div>
-                <a onClick={this.showHistory}>Show History</a>
+                <a onClick={() => {this.showHistory()}}>Show History</a>
 
                 { this.state.historylist
                     &&
@@ -40,7 +40,7 @@ export class History extends React.Component {
                         <ul>
                             { this.state.historylist.map(r => <li>{r.stamp} - {r.message}</li>) }
                         </ul>
-                        <a onClick={this.hide}>Hide it</a>
+                        <a onClick={() => {this.hide()}}>Hide it</a>
                     </div>
                 }
 

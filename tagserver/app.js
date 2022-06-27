@@ -52,7 +52,35 @@ app.post("/gettarget", (req, res) => {
     let y = req.body.playerid;
     console.log('getting target for ' + y);
     res.json(
-        g.ListPlayers()
+        g.GetTargetFor(y)
+    );
+});
+
+app.post("/getmethod", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('getting method for ' + y);
+    res.json(
+        g.GetMethodFor(y)
+    );
+});
+
+app.post("/getmethodopts", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('getting method for ' + y);
+    res.json(
+        g.GetMethodOptions()
+    );
+});
+
+app.post("/pickmethod", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    let mid = req.body.methodid;
+    console.log('setting method for ' + y);
+    res.json(
+        g.SetMethod(y, mid)
     );
 });
 

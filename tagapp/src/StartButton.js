@@ -11,7 +11,7 @@ export class StartButton extends React.Component {
         }
         
         console.log("start loaded and is heath? " + this.state.player);
-        this.startGame = this.startGame.bind(this);
+        this.StartGame = this.StartGame.bind(this);
         
     }
     
@@ -29,7 +29,7 @@ export class StartButton extends React.Component {
 
     }
     
-    startGame(props) {
+    StartGame(props) {
 
         fetch('/startgame', {
             method: 'post',
@@ -56,7 +56,7 @@ export class StartButton extends React.Component {
                     &&
                     this.state.player === "Heath"
                     &&
-                    <a onClick={startGame(this.state.player)}>Start Game?</a>
+                    <a onClick={() => {this.StartGame(this.state.player)}}>Start Game?</a>
                 }
                 {
                     this.state.started === false

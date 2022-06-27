@@ -5,7 +5,9 @@ import {MyTarget} from './MyTarget';
 import {User} from './User';
 import {Login} from './Login';
 import {History} from './History';
+import {MyMethod} from './MyMethod';
 import {StartButton} from './StartButton';
+
 
 import {WhoIsIn} from './WhoIsIn';
 
@@ -23,6 +25,7 @@ function App() {
            <div className="App">
                <span>TAGG, G.</span>
                <MyTarget player={User.Get()}></MyTarget>
+               <MyMethod player={User.Get()}></MyMethod>
                <History></History>
                <WhoIsIn></WhoIsIn>
                <StartButton player={User.Get()}></StartButton>
