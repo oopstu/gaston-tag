@@ -79,7 +79,7 @@ export class MyTarget extends React.Component {
                     (this.state.targetName) && 
 
                         <div className="card">
-                            <img src={icon} alt="{this.state.targetName}" style="width:100%"/>
+                            <img src={icon} alt={this.state.targetName} />
                                 <h1>{this.state.targetName}</h1>
                                 <p className="title">{this.GetSlogan(this.state.targetName)}</p>
                                 <ul>
