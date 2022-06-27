@@ -56,7 +56,7 @@ export class StartButton extends React.Component {
                     &&
                     this.state.player === "Heath"
                     &&
-                    <a onClick={() => {window.alert('start');}}>Start Game?</a>
+                    <a onClick={startGame(this.state.player)}>Start Game?</a>
                 }
                 {
                     this.state.started === false
