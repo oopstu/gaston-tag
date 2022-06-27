@@ -1,4 +1,5 @@
 import React, { Link } from 'react';
+import {format} from "date-fns";
 
 export class WhoIsIn extends React.Component {
 
@@ -37,10 +38,14 @@ export class WhoIsIn extends React.Component {
                 { this.state.playerlist 
                     && 
                     <div>
-                        <ul>
-                        { this.state.playerlist.map(r => <li key={r}>{r}</li>) }
+                        <ul className="playercards">
+                        { this.state.playerlist.map(
+                            r =>
+                                <li key={r}>{r}</li>
+                        ) 
+                        }
                         </ul>
-                            <a onClick={this.hide}>Hide 'em</a>
+                        <a className="button" onClick={this.hide}>Hide 'em</a>
                     </div>
                 }
                 

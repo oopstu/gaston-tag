@@ -85,18 +85,32 @@ export class MyMethod extends React.Component {
         return (
             <div>
                 <a onClick={() => {this.ShowMethod()}}>What is my method?</a>
-                <span>{this.state.method}</span>
-                { 
-                    (this.state.method) &&
-                    <a onClick={() => {this.HideMethod()}}>Hide</a>
+                {
+                    this.state.method &&
+                    <div className="card">
+                        <h1>{this.state.method}</h1>
+                        <ul className="buttons">
+                            <a onClick={() => {this.HideMethod()}}><li>Hide</li></a>
+                        </ul>
+                    </div>
+                 
                 }
                 
                 <div>
-                    <ul>
-                        {this.state.methodOpts?.map(y => 
-                            <a onClick={() => {this.SelectMethod(y.id)}}><li key={y.id}>{y.text}</li></a>)
-                        }
-                    </ul>
+                    {
+                        this.state.methodOpts &&
+                        <ul className="methodcards">
+                            {this.state.methodOpts?.map(y =>
+                                <a onClick={() => {
+                                    this.SelectMethod(y.id)
+                                }}>
+                                    <li key={y.id}>{y.text}<br/>
+                                        <span className="button">Select</span>
+                                    </li>
+                                </a>)
+                            }
+                        </ul>
+                    }
                 </div>
             </div>
         );

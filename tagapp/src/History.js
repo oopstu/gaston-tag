@@ -1,5 +1,5 @@
 import React, { Link } from 'react';
-import Moment from 'moment';
+import { format } from 'date-fns'
 
 export class History extends React.Component {
 
@@ -42,8 +42,7 @@ export class History extends React.Component {
                             { 
                                 this.state.historylist.map(r =>
                                     <div className="card">
-                                        <p className="title">{Moment(r.stamp).format('d MMM') -  r.playerName}</p>
-                                        <br/>
+                                        <p className="historyheader">{format(new Date(r.stamp), "MM/dd/yyyy hh:mm")} - {r.playerName}</p>
                                         {r.message}
                                     </div>
                                 ) 
@@ -51,7 +50,7 @@ export class History extends React.Component {
                         </ul>
                         <br/>
                         <br/>
-                        <a onClick={() => {this.hide()}}>Hide it</a>
+                        <a className="button" onClick={() => {this.hide()}}>Hide it</a>
                     </div>
                 }
 

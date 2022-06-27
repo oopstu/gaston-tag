@@ -29,7 +29,7 @@ class GameData {
         if (this.players.find(x => x.playerName === playerName)) {
             console.error('you cannot be someone you are not');        
         } else {
-            this.players.push({playerName: playerName, target: null, method: null});
+            this.players.push({playerName: playerName, target: null, method: null, isTagged: false});
             this.history.push({playerName: playerName, message: "Joined Game", stamp: new Date()});
             this.Save();
         }
@@ -84,10 +84,17 @@ class GameData {
     
     TagTarget(player) {
         // Set your target as tagged so they get the confirm page.
+        let pp = this.players.find(s => s.playerName === player);
+        // who is pp target?
+        let target = this.players.find(s => s.playerName === pp.targetName);
+        
+        this.history.push({playerName: player, message: player + " has tagged " + pp.targetName, stamp: new Date()});
         
         // this is the first step in a tag.
+        target.isTagged = true;
    
         // save game.
+        this.Save();
     }
     
     ConfirmTag(player) {

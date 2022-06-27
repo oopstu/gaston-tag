@@ -3,11 +3,90 @@
     max-width: 300px;
     margin: auto;
     text-align: center;
+    background: lightcyan;
+    margin-bottom: 25px;
+}
+
+.methodcards {
+    list-style: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.methodcards li {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    background: lightcyan;
+    margin-bottom: 25px;
 }
 
 .title {
     color: grey;
     font-size: 18px;
+}
+
+.cardicon {
+    width: 150px;
+    border-radius: 50%;
+    border: solid black 1px;
+    margin-top: 20px;
+}
+
+.buttons {
+    list-style: none;
+    text-align: center;
+    width: 220px;
+}
+
+.historyheader {
+    color: darkgreen;
+    font-size: small;
+}
+
+.playercards {
+    margin: auto;
+    list-style: none;
+    text-align: center;
+    width: 220px;
+}
+
+.playercards li {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: 8px;
+    text-align: center;
+    background: lightcyan;
+}
+
+.buttons li {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: cadetblue;
+    text-align: center;
+    cursor: pointer;
+    width: 60%;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: cadetblue;
+    text-align: center;
+    cursor: pointer;
+    width: 60%;
+    font-size: 18px;
+    margin-bottom: 25px;
+    margin-top: 20px;
 }
 
 button {

@@ -1,14 +1,24 @@
-import React, { useReducer, useState } from 'react';
+import React, { assets } from 'react';
 import { User } from './User';
+// import stu from './targets/stu.jpg';
+// import josiah from './targets/josiah.jpg';
+const images = require.context('./assets/targets', true);
 
 export class MyTarget extends React.Component {
+
+    
+    loadImage(imageName) { return import(`./assets/targets/${imageName.toLowerCase()}.jpg`).then(img => {
+        console.log(img);
+        this.setState({targetImage:img.default})
+    }); }
 
     constructor(props) {
         super(props);
         
         this.state = {
             targetName: null,
-            playerName: props.player
+            playerName: props.player,
+            targetImage: null,
         }
         
         this.LoadTarget = this.LoadTarget.bind(this);
@@ -33,6 +43,7 @@ export class MyTarget extends React.Component {
                 console.log('loaded target for you: ' + data.target);
                 if (data) {
                     console.log(data);
+                    this.loadImage(data.target);
                     this.setState({targetName: data.target})
                 } else {
                     console.log("no target, waiting for game start");
@@ -44,7 +55,36 @@ export class MyTarget extends React.Component {
     
     GetSlogan(playerName) {
         
-        return "Whatever";
+        switch (playerName) {
+            case "Josiah" : 
+                return "He's small, but he's sneaky.";
+            case "Ellie" :
+                return "She's talented on the guitar, be wary if she asks you to sing!";
+            case "Melissa" :
+                return "";
+            case "Amy" :
+                return "";
+            case "John" :
+                return "";
+            case "Lily" :
+                return "";
+            case "Christian" :
+                return "";
+            case "Jess" :
+                return "";
+            case "Stu" :
+                return "";
+            case "Luke" :
+                return "";
+            case "Liam" :
+                return "";
+            case "West" :
+                return "";
+            case "Erik" :
+                return "";
+
+        }
+        return "";
     }
 
     TagTarget() {
@@ -67,11 +107,8 @@ export class MyTarget extends React.Component {
     render() {
        
         // Set icon image.
-        let icon = null;
-        if (this.state.targetName) {
-            icon = '../targets/' + this.state.targetName.toLowerCase() + '.jpg';
-        }
-        
+        // let targetImages = [ { "stu" : {stu}  }, { "josiah" : {josiah} }]
+     
         return (
             <div>
                 <a onClick={this.LoadTarget}>Who is my target?</a>
@@ -79,12 +116,12 @@ export class MyTarget extends React.Component {
                     (this.state.targetName) && 
 
                         <div className="card">
-                            <img src={icon} alt={this.state.targetName} />
+                            <img src={this.state.targetImage} alt="" className="cardicon" />
                                 <h1>{this.state.targetName}</h1>
                                 <p className="title">{this.GetSlogan(this.state.targetName)}</p>
-                                <ul>
-                                    <li><a onClick={() => {this.TagTarget()}}>TAG</a></li>
-                                    <li><a onClick={() => {this.HideTarget()}}>Hide</a></li>
+                                <ul className="buttons">
+                                    <a onClick={() => {this.TagTarget()}}><li >TAG</li></a>
+                                    <a onClick={() => {this.HideTarget()}}><li >Hide</li></a>
                                 </ul>
                         </div>
                     
