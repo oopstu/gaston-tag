@@ -12,6 +12,7 @@ export class MyTarget extends React.Component {
         }
         
         this.LoadTarget = this.LoadTarget.bind(this);
+        this.GetSlogan = this.GetSlogan.bind(this);
     }
     
     HideTarget() {
@@ -40,6 +41,11 @@ export class MyTarget extends React.Component {
             })
             .catch(console.log)
     }
+    
+    GetSlogan(playerName) {
+        
+        return "Whatever";
+    }
 
     TagTarget() {
         // call api or anything
@@ -66,14 +72,13 @@ export class MyTarget extends React.Component {
                     (this.state.targetName) && 
 
                         <div className="card">
-                            <img src='./targets/Erik.jpg' alt="{this.state.targetName}" style="width:100%"/>
+                            {/*<img src='./targets/Erik.jpg' alt="{this.state.targetName}" style="width:100%"/>*/}
                                 <h1>{this.state.targetName}</h1>
-                                <p className="title">CEO & Founder, Example</p>
-                                <p>Harvard University</p>
-                                <p>
-                                    <a onClick={() => {this.TagTarget()}}>TAG</a>
-                                    <a onClick={() => {this.HideTarget()}}>Hide</a>
-                                </p>
+                                <p className="title">{this.GetSlogan(this.state.targetName)}</p>
+                                <ul>
+                                    <li><a onClick={() => {this.TagTarget()}}>TAG</a></li>
+                                    <li><a onClick={() => {this.HideTarget()}}>Hide</a></li>
+                                </ul>
                         </div>
                     
                 }

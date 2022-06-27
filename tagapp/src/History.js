@@ -1,4 +1,5 @@
 import React, { Link } from 'react';
+import Moment from 'moment';
 
 export class History extends React.Component {
 
@@ -38,8 +39,18 @@ export class History extends React.Component {
                     &&
                     <div>
                         <ul>
-                            { this.state.historylist.map(r => <li>{r.stamp} - {r.message}</li>) }
+                            { 
+                                this.state.historylist.map(r =>
+                                    <div className="card">
+                                        <p className="title">{Moment(r.stamp).format('d MMM') -  r.playerName}</p>
+                                        <br/>
+                                        {r.message}
+                                    </div>
+                                ) 
+                            }
                         </ul>
+                        <br/>
+                        <br/>
                         <a onClick={() => {this.hide()}}>Hide it</a>
                     </div>
                 }

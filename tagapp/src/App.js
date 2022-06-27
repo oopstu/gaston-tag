@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { useReducer, useState } from 'react';
 import './App.css';
-import './profile.css';
+import './cardstyles.css';
 import {MyTarget} from './MyTarget';
 import {User} from './User';
 import {Login} from './Login';
