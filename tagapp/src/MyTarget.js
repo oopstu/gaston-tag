@@ -69,7 +69,7 @@ export class MyTarget extends React.Component {
         // Set icon image.
         let icon = null;
         if (this.state.targetName) {
-            icon = './targets/' + this.state.targetName + '.jpg';
+            icon = '../targets/' + this.state.targetName.toLowerCase() + '.jpg';
         }
         
         return (
