@@ -74,6 +74,15 @@ app.post("/tagtarget", (req, res) => {
     );
 });
 
+app.post("/amtagged", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('checking tagged status ' + y);
+    res.json(
+        { "tagged": g.AmTagged(y) }
+    );
+});
+
 app.post("/confirmtag", (req, res) => {
     console.log(req.body);
     let y = req.body.playerid;

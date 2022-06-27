@@ -2,12 +2,10 @@ import logo from './logo.svg';
 import React, { useReducer, useState } from 'react';
 import './App.css';
 import './cardstyles.css';
-import {MyTarget} from './MyTarget';
 import {User} from './User';
 import {Login} from './Login';
-import {History} from './History';
-import {MyMethod} from './MyMethod';
-import {StartButton} from './StartButton';
+import {WholeStupidAppBecauseICantUsePromise} from './WholeStupidAppBecauseICantUsePromise';
+
 
 
 import {WhoIsIn} from './WhoIsIn';
@@ -21,18 +19,8 @@ function App() {
        return <Login></Login>; 
    
    } else {
-  
-       return (
-           <div className="App">
-               <span>TAGG, G.</span>
-               <MyTarget player={User.Get()}></MyTarget>
-               <MyMethod player={User.Get()}></MyMethod>
-               <History></History>
-               <WhoIsIn></WhoIsIn>
-               <StartButton player={User.Get()}></StartButton>
-               
-           </div>
-       );
+       
+       return <WholeStupidAppBecauseICantUsePromise></WholeStupidAppBecauseICantUsePromise>;
    }
 }
 

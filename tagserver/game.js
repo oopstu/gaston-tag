@@ -154,6 +154,9 @@ class GameData {
         this.Save();
     }
     
+    AmTagged(player) {
+        return this.players.find(x => x.playerName === player).isTagged;
+    }
    
     
     Save() {
