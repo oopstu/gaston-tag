@@ -43,6 +43,7 @@ class GameData {
     }
     
     GetHistory() {
+        console.log("sending back " + this.history.length + " history elements.");
         return this.history;
     }
     
@@ -55,7 +56,28 @@ class GameData {
     StartGame() {
         this.started = true;
         this.history.push({playerName: 'Heath', message: "Started the Game", stamp: new Date()});
+        
+        // Now pair everyone with a target and load all the 
+        // methods!
+        let methods = LoadMethods();
+     
+        // Each player should be the next players target.
+        for (let i = 0; i < this.players.length; i++) {
+            if (i + 1 === this.players.length) {
+                this.players[i].target = this.players[0].playerName;   
+            } else {
+                this.players[i].target = this.players[i+1].playerName;
+            }
+        }
+        
+        this.history.push({playerName: player, message: "Game Started!", stamp: new Date()});
+        
         this.Save();
+    }
+    
+    LoadMethods() {
+        let rawdata = fs.readFileSync('method.json');
+        return JSON.parse(rawdata);
     }
     
     Save() {

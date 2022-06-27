@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import React, { useReducer, useState } from 'react';
 import './App.css';
-import {MenuItem} from './MenuItem';
-import {Target} from './Target';
+import {MyTarget} from './MyTarget';
 import {User} from './User';
 import {Login} from './Login';
 import {History} from './History';
@@ -23,8 +22,7 @@ function App() {
        return (
            <div className="App">
                <span>TAGG, G.</span>
-               <MenuItem></MenuItem>
-               <Target></Target>
+               <MyTarget player={User.Get()}></MyTarget>
                <History></History>
                <WhoIsIn></WhoIsIn>
                <StartButton player={User.Get()}></StartButton>

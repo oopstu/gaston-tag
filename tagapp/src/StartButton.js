@@ -30,15 +30,14 @@ export class StartButton extends React.Component {
     }
     
     startGame(props) {
-    
-        fetch('/listplayers')
-            .then(res => res.json())
-            .then((data) => {
-                console.log("got result " + data + " and is this dad? " + this.state.player);
-                this.setState({ playerlist: data })
-                
+
+        fetch('/startgame', {
+            method: 'post',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({
+                "playerid": props
             })
-            .catch(console.log)
+        });
     }
     
     

@@ -65,6 +65,15 @@ app.post('/addplayer', (req, res) => {
     );
 });
 
+app.post('/startgame' , (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('adding ' + y);
+    res.json(
+        g.StartGame()
+    );
+});
+
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
