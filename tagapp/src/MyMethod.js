@@ -77,11 +77,20 @@ export class MyMethod extends React.Component {
             .catch(console.log)
     }
     
+    HideMethod() {
+        this.setState( { method: null });
+    }
+    
     render() {
         return (
             <div>
                 <a onClick={() => {this.ShowMethod()}}>What is my method?</a>
                 <span>{this.state.method}</span>
+                { 
+                    (this.state.method) &&
+                    <a onClick={() => {this.HideMethod()}}>Hide</a>
+                }
+                
                 <div>
                     <ul>
                         {this.state.methodOpts?.map(y => 

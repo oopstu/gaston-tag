@@ -82,6 +82,25 @@ class GameData {
         return { target: t };
     }
     
+    TagTarget(player) {
+        // Set your target as tagged so they get the confirm page.
+        
+        // this is the first step in a tag.
+   
+        // save game.
+    }
+    
+    ConfirmTag(player) {
+        
+        // Confirm tag,
+        
+        // transfer taget
+        
+        // rerandomize methods.
+        
+        // Save Game
+    }
+    
     GetMethodOptions(player) {
         
         // Now pair everyone with a target and load all the 

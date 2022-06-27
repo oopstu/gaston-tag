@@ -65,6 +65,25 @@ app.post("/getmethod", (req, res) => {
     );
 });
 
+app.post("/tagtarget", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('tagging taget for ' + y);
+    res.json(
+        g.TagTarget(y)
+    );
+});
+
+app.post("/confirmtag", (req, res) => {
+    console.log(req.body);
+    let y = req.body.playerid;
+    console.log('confirming tag for ' + y);
+    res.json(
+        g.ConfirmTag(y)
+    );
+});
+
+
 app.post("/getmethodopts", (req, res) => {
     console.log(req.body);
     let y = req.body.playerid;
