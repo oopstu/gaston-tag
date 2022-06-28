@@ -52,16 +52,6 @@ export class WholeStupidAppBecauseICantUsePromise extends React.Component {
 
     render() {
     
-<<<<<<< HEAD
-
-        // if (this.state.isTagged === null) {
-        //     return (
-        //         <div>TAG LOADING... YOU WILL WAIT FOREVER!</div>
-        //     );
-        // } else if (this.state.isTagged === true) {
-        //     <span>YOU HAZ DEAD!</span>
-        // } else {
-=======
         if (this.state.isTagged === null) {
             return (
                 <div>TAG LOADING... YOU WILL WAIT FOREVER!</div>
@@ -73,7 +63,6 @@ export class WholeStupidAppBecauseICantUsePromise extends React.Component {
                 }
             </div>);
         } else {
->>>>>>> 561ed3786f8a766951345cc92ff9bf36f98071cc
             return (
 
                 <div className="App">
