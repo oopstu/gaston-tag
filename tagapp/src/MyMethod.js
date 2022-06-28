@@ -50,7 +50,7 @@ export class MyMethod extends React.Component {
             .then(res => res.json())
             .then((data) => {
                 // notify it's cool yo.
-
+                this.setData({methodOpts: null});
             })
             .catch(console.log)
     }

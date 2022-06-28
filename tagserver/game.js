@@ -29,7 +29,7 @@ class GameData {
         if (this.players.find(x => x.playerName === playerName)) {
             console.error('you cannot be someone you are not');        
         } else {
-            this.players.push({playerName: playerName, target: null, method: null, isTagged: false});
+            this.players.push({playerName: playerName, target: null, method: null, isTagged: false, confirmed: false});
             this.history.push({playerName: playerName, message: "Joined Game", stamp: new Date()});
             this.Save();
         }
@@ -85,27 +85,73 @@ class GameData {
     TagTarget(player) {
         // Set your target as tagged so they get the confirm page.
         let pp = this.players.find(s => s.playerName === player);
+        console.log("Found player sending tag: " + pp.playerName);
         // who is pp target?
-        let target = this.players.find(s => s.playerName === pp.targetName);
+        let target = this.players.find(s => s.playerName === pp.target);
+        console.log("Found player getting tagged: " + pp.target);
         
-        this.history.push({playerName: player, message: player + " has tagged " + pp.targetName, stamp: new Date()});
+        this.history.push({playerName: player, message: player + " has tagged " + pp.target, stamp: new Date()});
         
         // this is the first step in a tag.
         target.isTagged = true;
    
         // save game.
         this.Save();
+        
+        return { result: "ok" };
     }
     
     ConfirmTag(player) {
         
         // Confirm tag,
+        // Set your target as tagged so they get the confirm page.
+        let taggedPlayer = this.players.find(s => s.playerName === player);
+        console.log("Found player confirming tag: " + taggedPlayer.playerName);
+        // finding the tagger
+        let tagger = this.players.find(s => s.target === taggedPlayer.playerName);
+        console.log("Found player tagging!: " + tagger.playerName);
+
+        this.history.push({playerName: taggedPlayer.playerName, message: player + " has confirmed they have been tagged", stamp: new Date()});
+
+        // this is the first step in a tag.
+        taggedPlayer.confirmed = true;
         
-        // transfer taget
+        tagger.target = taggedPlayer.target;
+        tagger.method = taggedPlayer.method;
         
-        // rerandomize methods.
-        
-        // Save Game
+        // Let's just check and make sure that you're not targeting yourself.
+        if (tagger.target === tagger.playerName) {
+            console.log("Oh no, tagger has his/her self as target, reshuffle!");
+
+            console.log("Shrinking the universe of players.");
+            let liveplayers = [];
+            // Each player should be the next players target.
+            for (let i = 0; i < this.players.length; i++) {
+                if (!this.players[i].isTagged 
+                    && !this.players[i].confirmed) {
+                    liveplayers.push(this.players[i]);
+                }
+            }
+            
+            
+            console.log('Setting targets');
+            // Each player should be the next players target.
+            for (let i = 0; i < liveplayers; i++) {
+                if (i + 1 === liveplayers.length) {
+                    liveplayers[i].target = liveplayers[0].playerName;
+                } else {
+                    liveplayers[i].target = liveplayers[i+1].playerName;
+                }
+            }
+            console.log('all targets set.');
+            
+        }
+
+        // save game.
+        this.Save();
+
+        return { result: "ok" };
+       
     }
     
     GetMethodOptions(player) {
@@ -134,6 +180,8 @@ class GameData {
         this.players.find(x => x.playerName === player).method = methodId;
 
         this.Save();
+        
+        return { result: "ok"};
     }
     
     StartGame() {
@@ -155,7 +203,11 @@ class GameData {
     }
     
     AmTagged(player) {
-        return this.players.find(x => x.playerName === player).isTagged;
+        let p = this.players.find(x => x.playerName === player);
+        return {
+            istagged: p.isTagged,
+            confirmed: p.confirmed 
+        };
     }
    
     
