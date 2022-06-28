@@ -1,0 +1,19 @@
+.title {
+    font-size:60px;
+    background-color:rgb(50, 202, 55);
+    border:3px solid rgb(74, 116, 58);
+    border-radius:25px;
+    padding:10px;
+    font-weight: bold;
+    box-shadow: 3px 3px;
+    color:rgb(75, 122, 67);
+}
+
+.startstuff {
+    font-size:35px;
+}
+
+.listItems {
+    margin-top:40px;
+    
+}
