@@ -98,7 +98,7 @@ export class MyTarget extends React.Component {
         })
             .then(res => res.json())
             .then((data) => {
-                    this.setState({targetName: "Submitting tag, waiting for confirmation."});
+                    this.setState({targetName: null});
                 
             })
             .catch(console.log)

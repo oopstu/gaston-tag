@@ -79,7 +79,7 @@ app.post("/amtagged", (req, res) => {
     let y = req.body.playerid;
     console.log('checking tagged status ' + y);
     res.json(
-        { "tagged": g.AmTagged(y) }
+        g.AmTagged(y)
     );
 });
 
